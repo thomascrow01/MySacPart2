@@ -5,7 +5,7 @@
 </head>
 <body>
 	<header>
-		<div href="index.html" class="headerbutton"><h2>Home</h2></div>
+		<a href="index.html"><div class="headerbutton"><h2>Home</h2></div></a>
 	</header>
 	<?php
 		/* Create first line of the table */
