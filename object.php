@@ -9,21 +9,8 @@
 		private $totalUn;
 		private $totalRe;
 		public function __construct(){
-			$this->workerName = "";
 			$this->workerMass=0;
 			$this->belongingsMass=0;
-			$this->totalCost=0;
-			$this->totalUn=0;
-			$this->totalRe=0;
-		}
-		public function getWorkerName(){
-			return $this->workerName;
-		}
-		public function getWorkerMass(){
-			return $this->workerMass;
-		}
-		public function getBelongingsMass(){
-			return $this->belongingsMass;
 		}
 		public function getOneWayCost(){
 			return ( $this->workerMass + $this->belongingsMass ) * 500;
