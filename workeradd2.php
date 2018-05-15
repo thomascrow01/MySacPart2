@@ -30,13 +30,13 @@
 		$totalMass = $objWorker->totalMass();
 		$excessBelongingsCost = $objWorker->excessBelongingsCost();
 		/* Check if values are set */
-		if(isset($workername) and isset($workerMass, $belongingsMass)){
-			$newworker = "|" . $workerName . "?" . $workerMass . "?" . $belongingsMass . "?" . "$oneWayCost" . "?" . "$totalUn" . "?" . "$totalRe" . "?" . "$belongingsCost" . "?" . "$unCost" . "?" . "reCost" . "?" . "$twoWayCost" . "?" . "$totalMass" . "?" . "$excessBelongingsCost";
+		if(isset($workerName) and isset($workerMass, $belongingsMass)){
+			$newworker = "|" . $workerName . "?" . $workerMass . "?" . $belongingsMass . "?" . "$oneWayCost" . "?" . "$totalUn" . "?" . "$totalRe" . "?" . "$belongingsCost" . "?" . "$unCost" . "?" . "$reCost" . "?" . "$twoWayCost" . "?" . "$totalMass" . "?" . "$excessBelongingsCost";
 			// Get value for already existing workers.
 			$textfile = file_get_contents('worker.txt');
 			// Add new worker to the list of workers.
 			file_put_contents('worker.txt',$textfile.$newworker);
-			echo "Worker added<br><table><tr><td></td></tr></table>";
+			echo "<h3>Worker added</h3><br><table><tr><td>Name</td><td>Mass</td><td>Belongings mass</td></tr><tr><td>$workerName</td><td>$workerMass</td><td>$belongingsMass</td></tr></table>";
 		}else{
 			echo "Worker could not be added";
 		}
