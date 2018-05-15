@@ -9,21 +9,34 @@
 		<a href="viewworkers.php"><div class="headerbutton"><h2>View workers</h2></div></a>
 	</header>
 	<?php
-		$workername = $_POST['workername'];
-		$workermass = $_POST['workermass'];
-		$belongingsmass = $_POST['belongingsmass'];
+		/* Allow object.php to be used */
+		include 'object.php';
+		$workerName = $_POST['workername'];
+		$workerMass = $_POST['workermass'];
+		$belongingsMass = $_POST['belongingsmass'];
 		/* Replace non set belongings as 0 */
 		if(isset($belongingsmassadd) == false){
-			$belongingsmassadd = 0;
+			$belongingsmass = 0;
 		}
+		/* Create an object */
+		$objWorker = new worker($workerMass, $belongingsMass);
+		$oneWayCost = $objWorker->getOneWayCost();
+		$totalUn = $objWorker->getTotalUn();
+		$totalRe = $objWorker->getTotalRe();
+		$belongingsCost = $objWorker->getBelongingsCost();
+		$unCost = $objWorker->getUnCost();
+		$reCost = $objWorker->getReCost();
+		$twoWayCost = $objWorker->getTwoWayCost();
+		$totalMass = $objWorker->totalMass();
+		$excessBelongingsCost = $objWorker->excessBelongingsCost();
 		/* Check if values are set */
-		if(isset($workername) and isset($workermass)){
-			$newworker = "|" . $workername . "?" . $workermass . "?" . $belongingsmass;
+		if(isset($workername) and isset($workerMass, $belongingsMass)){
+			$newworker = "|" . $workerName . "?" . $workerMass . "?" . $belongingsMass . "?" . "$oneWayCost" . "?" . "$totalUn" . "?" . "$totalRe" . "?" . "$belongingsCost" . "?" . "$unCost" . "?" . "reCost" . "?" . "$twoWayCost" . "?" . "$totalMass" . "?" . "$excessBelongingsCost";
 			// Get value for already existing workers.
 			$textfile = file_get_contents('worker.txt');
 			// Add new worker to the list of workers.
 			file_put_contents('worker.txt',$textfile.$newworker);
-			echo "<table><tr><td></td></tr></table>";
+			echo "Worker added<br><table><tr><td></td></tr></table>";
 		}else{
 			echo "Worker could not be added";
 		}
