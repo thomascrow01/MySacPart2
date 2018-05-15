@@ -2,10 +2,10 @@
 	/* Define the class */
 	class worker{
 		/* define the public variables and functions */
-		public $workerName;
-		public $workerMass;
-		public $belongingsMass;
-		public function __construct(){
+		private $workerName;
+		private $workerMass;
+		private $belongingsMass;
+		public function __construct($workerMass, $belongingsMass){
 			$this->workerMass=$workerMass;
 			$this->belongingsMass=$belongingsMass;
 		}
