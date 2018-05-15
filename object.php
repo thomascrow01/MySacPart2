@@ -1,16 +1,13 @@
 <?php
 	/* Define the class */
 	class worker{
-		/* define the private variables */
-		private $workerName;
-		private $workerMass;
-		private $belongingsMass;
-		private $totalCost;
-		private $totalUn;
-		private $totalRe;
+		/* define the public variables and functions */
+		public $workerName;
+		public $workerMass;
+		public $belongingsMass;
 		public function __construct(){
-			$this->workerMass=0;
-			$this->belongingsMass=0;
+			$this->workerMass=0.0;
+			$this->belongingsMass=0.0;
 		}
 		public function getOneWayCost(){
 			return ( $this->workerMass + $this->belongingsMass ) * 500;
