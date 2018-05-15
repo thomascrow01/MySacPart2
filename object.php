@@ -6,8 +6,8 @@
 		public $workerMass;
 		public $belongingsMass;
 		public function __construct(){
-			$this->workerMass=0.0;
-			$this->belongingsMass=0.0;
+			$this->workerMass=$workerMass;
+			$this->belongingsMass=$belongingsMass;
 		}
 		public function getOneWayCost(){
 			return ( $this->workerMass + $this->belongingsMass ) * 500;
@@ -32,6 +32,13 @@
 		}
 		public function totalMass(){
 			return $this->workerMass + $this->belongingsMass;
+		}
+		public function excessBelongingsCost(){
+			if($this->belongingsMass * 500 - 15000 > 0){
+				return $this->belongingsMass * 500 - 15000;
+			}else{
+				return 0;
+			}
 		}
 	}
 ?>
